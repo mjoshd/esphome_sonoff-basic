@@ -93,9 +93,8 @@ output:
 
 
 light:
-  ## https://esphomelib.com/esphomeyaml/components/light/monochromatic.html
-  ## attach a monochrome light to the PWM pin
   - platform: monochromatic
+    # https://esphome.io/components/light/monochromatic.html
     name: $friendly_name LED
     output: green_led_output
     id: status_led
