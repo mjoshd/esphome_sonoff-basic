@@ -80,7 +80,6 @@ switch:
     turn_off_action:
       - light.turn_off: status_led
       - switch.turn_off: relay
-    # optimistic: true # this will change the toggle switch to individual on/off buttons
 
 
 output:
