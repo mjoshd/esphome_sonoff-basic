@@ -1,8 +1,9 @@
 substitutions:
   # https://esphome.io/guides/configuration-types.html#substitutions
-  device_name: basement_fan
-  friendly_name: Basement Fan
-  ip_address: !secret basement_fan_ip
+  device_name: sonoff_basic
+  friendly_name: Sonoff Basic
+  ip_address: !secret sonoff_basic_ip
+  icon: "mdi:flash-circle"
 
 
 esphome:
@@ -11,7 +12,7 @@ esphome:
   platform: ESP8266
   board: esp01_1m
   board_flash_mode: dout
-  
+
 
 wifi:
   # https://esphome.io/components/wifi
@@ -23,10 +24,10 @@ wifi:
     subnet: !secret wifi_subnet
     dns1: !secret wifi_dns1
 
-    
+
 # web_server:
 #   port: 80
-  # https://esphome.io/components/web_server.html
+#   # https://esphome.io/components/web_server.html
 
 
 logger:
@@ -34,7 +35,7 @@ logger:
 
 
 api:
-  # password: !secret esphome_api_password
+  password: !secret esphome_api_password
   # https://esphome.io/components/api
 
 
@@ -54,48 +55,27 @@ binary_sensor:
     id: button
     name: ${friendly_name} Button
     on_press:
-      - switch.toggle: relay_template
+      - switch.toggle: relay
     internal: True
 
 
 switch:
   - platform: gpio
-    pin: GPIO12
-    id: relay
-
-  # tie the led & relay together & report status regarless of trigger method   
-  - platform: template
-    # https://esphome.io/components/switch/template.html
-    name: ${friendly_name}
-    id: relay_template
-    lambda: |-
-      if (id(relay).state) {
-        return true;
-      } else {
-        return false;
-      }
-    turn_on_action:
-      - light.turn_on: status_led
-      - switch.turn_on: relay
-    turn_off_action:
-      - light.turn_off: status_led
-      - switch.turn_off: relay
-
-
-output:
-  - platform: esp8266_pwm
-    # https://esphome.io/components/output/esp8266_pwm.html
-    id: green_led_output
+    # https://esphome.io/components/switch/gpio
+    id: led
+    name: ${friendly_name} LED
     pin:
       number: GPIO13
       inverted: True
-
-
-light:
-  - platform: monochromatic
-    # https://esphome.io/components/light/monochromatic.html
-    name: ${friendly_name} LED
-    output: green_led_output
-    id: status_led
-    default_transition_length: 1ms # controls the light fade/transition time
     internal: True
+
+  - platform: gpio
+    # https://esphome.io/components/switch/gpio
+    pin: GPIO12
+    id: relay
+    name: ${friendly_name}
+    icon: ${icon}
+    on_turn_on:
+    - switch.turn_on: led
+    on_turn_off:
+    - switch.turn_off: led
