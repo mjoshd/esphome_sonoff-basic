@@ -2,9 +2,9 @@
 
 Device links:
 
-[2-pack (Amazon)](https://amzn.to/2Y5OGp8)
+[2-pack (Amazon)](https://www.amazon.com/gp/product/B07BDFDHX9/ref=as_li_tl?ie=UTF8&tag=mjoshd-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B07BDFDHX9&linkId=437b63067b700d2eb9dfcd6d26bf384e)
 
-[6-pack (Amazon)](https://amzn.to/2Y0tC3v)
+[6-pack (Amazon)](https://www.amazon.com/gp/product/B0773DFQJ9/ref=as_li_tl?ie=UTF8&tag=mjoshd-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0773DFQJ9&linkId=7aae61321dc08d7f3625b99c7828d899)
 
 <br>
 
